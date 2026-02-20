@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Datos } from './datos';
+import { ReseniaService } from './resenia-service';
 
-describe('Datos', () => {
-  let service: Datos;
+describe('ReseniaService', () => {
+  let service: ReseniaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Datos);
+    service = TestBed.inject(ReseniaService);
   });
 
   it('should be created', () => {

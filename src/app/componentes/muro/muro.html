@@ -1,0 +1,28 @@
+<div class="muro-container">
+  <h1>Novedades de tus amigos</h1>
+
+  @if (!resenias) {
+    <p>Cargando novedades...</p>
+  } @else if (resenias.length === 0) {
+    <p class="empty-msg">Parece que tus amigos aún no han leído nada...</p>
+  } @else {
+    <div class="feed">
+      @for (r of resenias; track r.idLibro) {
+        <div class="card">
+          <img [src]="r.urlPortada ? r.urlPortada.replace('http://', 'https://') : 'assets/no-book.png'" 
+               [alt]="r.tituloLibro" class="portada">
+          <div class="info">
+            <h3>{{ r.tituloLibro }}</h3>
+            <p><strong>{{ r.nombreUsuario }}</strong> dice: {{ r.comentario }}</p>
+            <div class="stars">
+                @for (star of [1,2,3,4,5]; track $index) {
+                  <span [style.color]="$index < r.valoracion ? '#f1c40f' : '#ccc'">★</span>
+                }
+                <span class="rating-text">({{ r.valoracion }})</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

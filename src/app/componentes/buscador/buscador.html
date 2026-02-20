@@ -1,0 +1,50 @@
+<div class="buscador-container">
+  <div class="search-box">
+    <input 
+      [(ngModel)]="terminoBusqueda" 
+      (keyup.enter)="ejecutarBusqueda()"
+      placeholder="Busca tu próximo libro..."
+    >
+    <button type="button" (click)="ejecutarBusqueda()">Buscar</button>
+  </div>
+
+  @if (cargando) {
+    <p>Buscando resultados relevantes...</p>
+  }
+
+  <div class="resultados-grid">
+    @for (libro of resultados(); track $index) {
+      <div class="libro-card">
+        <img [src]="libro.urlPortada" [alt]="libro.titulo">
+        <div class="libro-info">
+          <h4>{{ libro.titulo }}</h4>
+          <p>{{ libro.autores }}</p>
+          <button type="button" class="btn-resenia" (click)="seleccionarLibro(libro)">
+            Escribir reseña
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (libroParaReseniar()) {
+    <div class="modal-resenia">
+      <h3>Escribiendo reseña para: {{ libroParaReseniar().titulo }}</h3>
+      
+      <div class="form-group">
+        <label>Nota (1-5):</label>
+        <input type="number" min="1" max="5" #puntuacion value="5">
+      </div>
+
+      <div class="form-group">
+        <label>Comentario:</label>
+        <textarea #texto placeholder="¿Qué te ha parecido este libro?"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" (click)="guardarResenia(puntuacion.value, texto.value)">Publicar</button>
+        <button type="button" (click)="libroParaReseniar.set(null)">Cancelar</button>
+      </div>
+    </div>
+  }
+</div>

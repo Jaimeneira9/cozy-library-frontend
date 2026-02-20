@@ -1,0 +1,41 @@
+.buscador-container { padding: 20px; max-width: 1000px; margin: 0 auto; }
+
+.search-box { display: flex; gap: 10px; margin-bottom: 30px; }
+
+input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #ddd; }
+
+button { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; }
+
+.resultados-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 20px; 
+}
+
+.libro-card { border: 1px solid #eee; border-radius: 10px; overflow: hidden; background: white; text-align: center; padding: 10px; }
+
+.libro-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; }
+
+.btn-resenia { background: #2ecc71; margin-top: 10px; font-size: 0.8rem; }
+.modal-resenia {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-resenia textarea {
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
